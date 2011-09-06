@@ -7,6 +7,11 @@ var zombie = require("zombie");
 
 var url = require('url');
 
+var base = require("./lib/models/base");
+var card = require("./lib/models/card");
+
+var nomnom = require("nomnom");
+
 var Scraper = function() {
     var browser = new zombie.Browser({debug: true});
     browser.runScripts = false;
@@ -24,6 +29,7 @@ var Scraper = function() {
                 }
               };
 
+        console.log("Starting scrape fetch...");
         browser.visit(url.format(fetchurl), function(err, browser, status) {
             if(err) {
                 console.log("Shit, couldn't fetch page from Gatherer.");
@@ -40,6 +46,9 @@ var Scraper = function() {
 
             var card_item_table = verifyElements(browser.document.querySelector(".cardItemTable"));
             var card_items = verifyElements(card_item_table.querySelectorAll("tr.cardItem"));
+
+            // TODO dang, because of forEach() we can't process the items
+            // in sequence, yet still wait on asynchronous things
             card_items.update().forEach(function(card_item) {
                 var title = card_item.querySelector("span.cardTitle a").innerHTML;
                 var set_versions = verifyElements(card_item.querySelector("td.setVersions"));
@@ -47,6 +56,31 @@ var Scraper = function() {
                 var set_hyperlink = url.parse(set_hyperlink_element.href, true);
                 var mid = set_hyperlink.query.multiverseid;
                 console.log(mid + ": " + title);
+
+                var createCard = function() {
+                    var new_card = card.newInstance();
+                    new_card.id = "mtg_card_" + mid;
+                    new_card.title = title;
+                    new_card.save(function() {
+                        console.log("Successfully saved card: " + mid);
+                    }, function(error) {
+                        console.log("Unable to save card: " + error);
+                    });
+                };
+                
+                card.find("mtg_card_" + mid, function(found_card) {
+                    console.log("Card with multiverse ID '" + mid + "' exists already, deleting.");
+                    found_card.destroy(function() {
+                        // done
+                        createCard();
+                    }, function() {
+                        // error
+                        console.log("Unable to delete existing card, what the crap");
+                    });
+                }, function(error) {
+                    // card not existing, going to make one
+                    createCard();
+                });
             });
 
             var page_links = browser.document.querySelector('div.pagingControls')
@@ -68,11 +102,32 @@ var Scraper = function() {
 
 var CardScience = function() {
     console.log("Welcome to CardScience.");
+    var options = nomnom.opts({
+        installdb : {
+            abbr: "i",
+            help: "Install design documents into CouchDB",
+            flag: true
+        }
+    }).parseArgs();
     var connection = new cradle.Connection();
     var db = connection.database("cardscience");
+    
 
     var initialize = function() {
         var scraper = new Scraper();
+        base.init(db);
+
+        
+        if(options.installdb) {
+            base.Base.updateAllDesignDocuments(function() {
+                console.log("Updated all design docs successfully.");
+                // now that data model is properly initialized, do initial loads from DB, etc
+                process.exit(0);
+            }.bind(this), function(e) {
+                console.log("Problem updating design documents: " + e.reason);
+                process.exit(-1);
+            });
+        }
     };
 
     db.exists(function(err, exists) {
