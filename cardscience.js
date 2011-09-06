@@ -61,19 +61,49 @@ var Scraper = function() {
             // jobs simultaneously, but only returned once all of them
             // had completed.
             card_items.update().eachWait(function(card_item, each_done, each_error) {
-                var title = card_item.querySelector("span.cardTitle a").innerHTML;
-                var set_versions = verifyElements(card_item.querySelector("td.setVersions"));
-                var set_hyperlink_element = verifyElements(set_versions.querySelector('div[id$="cardSetCurrent"] > a'));
-                var set_hyperlink = url.parse(set_hyperlink_element.href, true);
-                var mid = set_hyperlink.query.multiverseid;
-                console.log(mid + ": " + title);
+                var card_info_elem = verifyElements(card_item.querySelector("div.cardInfo"));
+                var set_versions_elem = verifyElements(card_item.querySelector("td.setVersions"));
+                var set_hyperlink_elem = verifyElements(set_versions_elem.querySelector('div[id$="cardSetCurrent"] > a'));
+                var mana_cost_elem = verifyElements(card_info_elem.querySelector("span.manaCost"));
+                var mana_cost_img_elems = verifyElements(mana_cost_elem.querySelectorAll("img"));
+                var mana_costs = {};
+                mana_cost_img_elems.update().forEach(function(mana_img) {
+                    if(isNaN(mana_img.alt)) {
+                        // it's a mana colour
+                        var color_name = mana_img.alt.toLowerCase();
+                        mana_costs[color_name] = mana_costs[color_name] || 0;
+                        mana_costs[color_name]++;
+                    } else {
+                        // it's colorless
+                        mana_costs["colourless"] = mana_costs["colourless"] || 0;
+                        Number(mana_img.alt).times(function() {
+                            mana_costs["colourless"]++;
+                        });
+                    }
+                });
+                // TODO assert that length of mana_cost_list matches converted_mana_cost
+
+                var set_hyperlink = url.parse(set_hyperlink_elem.href, true);
+
+
+                // usages of innerHTML bother me.  Entities and such
+                // are not processed, but don't seem to occur (often?)
+                // in the magic card titles
+                var new_card = {
+                    title: verifyElements(card_item.querySelector("span.cardTitle a")).innerHTML,
+                    id: "mtg_card_" + set_hyperlink.query.multiverseid,
+                    mid: set_hyperlink.query.multiverseid,
+                    mana_cost: mana_costs,
+                    converted_mana_cost: verifyElements(card_info_elem.querySelector("span.convertedManaCost")).innerHTML,
+                };
+                                               
+                console.log(new_card.mid + ": " + new_card.title);
+                // console.log(new_card);
 
                 var createCard = function() {
-                    var new_card = card.newInstance();
-                    new_card.id = "mtg_card_" + mid;
-                    new_card.title = title;
+                    card.newInstance(new_card);
                     new_card.save(function() {
-                        console.log("Successfully saved card: " + mid);
+                        console.log("Successfully saved card: " + new_card.mid);
                         each_done();
                     }, function(error) {
                         console.log("Unable to save card: " + error);
@@ -81,8 +111,8 @@ var Scraper = function() {
                     });
                 };
                 
-                card.find("mtg_card_" + mid, function(found_card) {
-                    console.log("Card with multiverse ID '" + mid + "' exists already, deleting.");
+                card.find("mtg_card_" + new_card.mid, function(found_card) {
+                    console.log("Card with multiverse ID '" + new_card.mid + "' exists already, deleting.");
                     found_card.destroy(function() {
                         // done
                         createCard();
