@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 var util = require("util");
 
+var csutil = require("./lib/util");
+
 var cradle = require("cradle");
 
 var zombie = require("zombie");
@@ -47,9 +49,18 @@ var Scraper = function() {
             var card_item_table = verifyElements(browser.document.querySelector(".cardItemTable"));
             var card_items = verifyElements(card_item_table.querySelectorAll("tr.cardItem"));
 
-            // TODO dang, because of forEach() we can't process the items
-            // in sequence, yet still wait on asynchronous things
-            card_items.update().forEach(function(card_item) {
+            // TODO dang, with forEach() we can't process the items in
+            // sequence, yet still wait on asynchronous things.  this
+            // is useful mostly so we can handle errors.  with
+            // eachWait(), we can do just that.  however, it means
+            // that we really are processing things synchronously and
+            // end up spending a lot of time waiting for each CouchDB
+            // insert to complete (admittedly, I'm not sure how well
+            // CouchDB parallelizes creation on a single instance on a
+            // machine).  we could do even better if we ran all the
+            // jobs simultaneously, but only returned once all of them
+            // had completed.
+            card_items.update().eachWait(function(card_item, each_done, each_error) {
                 var title = card_item.querySelector("span.cardTitle a").innerHTML;
                 var set_versions = verifyElements(card_item.querySelector("td.setVersions"));
                 var set_hyperlink_element = verifyElements(set_versions.querySelector('div[id$="cardSetCurrent"] > a'));
@@ -63,8 +74,10 @@ var Scraper = function() {
                     new_card.title = title;
                     new_card.save(function() {
                         console.log("Successfully saved card: " + mid);
+                        each_done();
                     }, function(error) {
                         console.log("Unable to save card: " + error);
+                        each_error();
                     });
                 };
                 
@@ -76,24 +89,28 @@ var Scraper = function() {
                     }, function() {
                         // error
                         console.log("Unable to delete existing card, what the crap");
+                        each_error();
                     });
                 }, function(error) {
                     // card not existing, going to make one
                     createCard();
                 });
+            }.bind(this), function() {
+                // done
+                var page_links = browser.document.querySelector('div.pagingControls')
+                
+                var second_last = page_links.childNodes[page_links.childNodes.length - 1];
+
+                if(second_last.tagName === "A") {
+                    console.log("More to do!");
+                    this.scrapePage(page_no + 1, success, failure);
+                } else {
+                    console.log("On last page!");
+                    success();
+                }
+            }.bind(this), function() {
+                throw new Error("Problem dealing with a card item.");
             });
-
-            var page_links = browser.document.querySelector('div.pagingControls')
-
-            var second_last = page_links.childNodes[page_links.childNodes.length - 1];
-
-            if(second_last.tagName === "A") {
-                console.log("More to do!");
-                this.scrapePage(page_no + 1, success, failure);
-            } else {
-                console.log("On last page!");
-                success();
-            }
         }.bind(this));
     };
 
