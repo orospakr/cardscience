@@ -1,20 +1,22 @@
 #!/usr/bin/env node
 var util = require("util");
 
-var csutil = require("./lib/util");
+csutil = require("./lib/util");
 
-var cradle = require("cradle");
+cradle = require("cradle");
+nomnom = require("nomnom");
+zombie = require("zombie");
 
-var zombie = require("zombie");
+log = require("./lib/logging");
 
-var url = require('url');
+url = require('url');
 
-var base = require("./lib/models/base");
-var card = require("./lib/models/card");
+base = require("./lib/models/base");
+card = require("./lib/models/card");
 
-var nomnom = require("nomnom");
+var c = "Main";
 
-var Scraper = function() {
+Scraper = function() {
     var browser = new zombie.Browser({debug: true});
     browser.runScripts = false;
 
@@ -37,20 +39,20 @@ var Scraper = function() {
 
     this.scrapePage = function(page_no, success, failure) {
         fetchurl = { protocol: "http",
-                host: "gatherer.wizards.com",
-                pathname: "/Pages/Search/Default.aspx",
-                query: {
-                    page: page_no,
-                    output: "standard",
-                    special: "true", // what's this for?
-                    format: '["Standard"]'
-                }
-              };
+                     host: "gatherer.wizards.com",
+                     pathname: "/Pages/Search/Default.aspx",
+                     query: {
+                         page: page_no,
+                         output: "standard",
+                         special: "true", // what's this for?
+                         format: '["Standard"]'
+                     }
+                   };
 
-        console.log("Starting scrape fetch...");
+        log.debug(c, "Starting scrape fetch...");
         browser.visit(url.format(fetchurl), function(err, browser, status) {
             if(err) {
-                console.log("Shit, couldn't fetch page from Gatherer.");
+                log.error(c, "Shit, couldn't fetch page from Gatherer.");
                 // TODO if it failed, try again at least a few times before emitting error
                 throw(err.message);
             }
@@ -79,11 +81,16 @@ var Scraper = function() {
             // jobs simultaneously, but only returned once all of them
             // had completed.
             card_items.update().eachWait(function(card_item, each_done, each_error) {
+                // usages of innerHTML bother me.  Entities and such
+                // are not processed, but don't seem to occur (often?)
+                // in the magic card titles
                 var card_info_elem = verifyElements(card_item.querySelector("div.cardInfo"));
                 var set_versions_elem = verifyElements(card_item.querySelector("td.setVersions"));
                 var set_hyperlink_elem = verifyElements(set_versions_elem.querySelector('div[id$="cardSetCurrent"] > a'));
                 var mana_cost_elem = verifyElements(card_info_elem.querySelector("span.manaCost"));
                 var mana_cost_img_elems = verifyElements(mana_cost_elem.querySelectorAll("img"));
+
+                var mid = url.parse(set_hyperlink_elem.href, true).query.multiverseid;
                 var mana_costs = {};
                 // TODO this isn't good enough.
                 // these are the formats:
@@ -161,60 +168,70 @@ var Scraper = function() {
                     }
                 });
                 // TODO assert that length of mana_cost_list matches converted_mana_cost
-
-                var set_hyperlink = url.parse(set_hyperlink_elem.href, true);
-
-
-                // usages of innerHTML bother me.  Entities and such
-                // are not processed, but don't seem to occur (often?)
-                // in the magic card titles
-                var new_card = {
-                    title: verifyElements(card_item.querySelector("span.cardTitle a")).innerHTML,
-                    _id: "mtg_card_" + set_hyperlink.query.multiverseid,
-                    mid: set_hyperlink.query.multiverseid,
-                    mana_cost: mana_costs,
-                    converted_mana_cost: verifyElements(card_info_elem.querySelector("span.convertedManaCost")).innerHTML,
-                };
-                                               
-                console.log(new_card.mid + ": " + new_card.title);
-                // console.log(new_card);
-
-                var createCard = function() {
-                    card.newInstance(new_card);
-                    new_card.save(function() {
-                        console.log("Successfully saved card: " + new_card.mid);
-                        each_done();
-                    }, function(error) {
-                        console.log("Unable to save card: " + error);
-                        each_error();
-                    });
-                };
                 
-                card.find("mtg_card_" + new_card.mid, function(found_card) {
-                    console.log("Card with multiverse ID '" + new_card.mid + "' exists already, deleting.");
-                    found_card.destroy(function() {
-                        // done
-                        createCard();
+                // ANDREW START HERE
+                // look in found_cards, make sure we haven't hit it already.
+                // if not there, search for existing MultiverseID.  if exists, load it, put it in found_cards, and call clear() on it.
+                // if not there, create new one.
+                // that gives us proper updates!
+                // then implement facets as per the huge-ass comment
+
+                var key = "mtg_card_" + mid;
+
+                log.debug(c, "Processing card: " + mid);
+
+                var current_card = found_cards[key];
+
+                if(current_card === undefined) {
+                    log.debug(c, "We haven't seen this card yet!")
+                    // we haven't seen this card already
+                    card.find(key, function(found_card) {
+                        if(found_card !== undefined) {
+                            // but it *does* already exist in the DB.
+                            log.debug(c, "... but it does exist in the DB. Loading, but clearing.");
+                            current_card = found_card;
+                            // we don't want the old values to stick around, though.
+                            found_card.clear();
+                        } else {
+                            // it doesn't even exist in the DB, we'll have to start fresh
+                            log.debug(c, "... it doesn't even exist in the DB, making a fresh one.");
+                            current_card = card.newInstance();
+                        }
+                        // then, continue scrape by moving the below block in here.
+                        current_card.update({
+                            title: verifyElements(card_item.querySelector("span.cardTitle a")).innerHTML,
+                            _id: "mtg_card_" + mid,
+                            mid: mid,
+                            mana_cost: mana_costs,
+                            converted_mana_cost: verifyElements(card_info_elem.querySelector("span.convertedManaCost")).innerHTML
+                        });
+                        // TODO save it!
+                        current_card.save(function() {
+                            // success!
+                            log.debug(c, "Successfully saved card.");
+                            each_done();
+                        }, function() {
+                            log.error(c, "Problem saving card: " + mid);
+                            each_error();
+                        });
                     }, function() {
-                        // error
-                        console.log("Unable to delete existing card, what the crap");
+                        // fuck.
                         each_error();
                     });
-                }, function(error) {
-                    // card not existing, going to make one
-                    createCard();
-                });
+                }
+
+
             }.bind(this), function() {
-                // done
+                // done all
                 var page_links = browser.document.querySelector('div.pagingControls')
                 
                 var second_last = page_links.childNodes[page_links.childNodes.length - 1];
 
                 if(second_last.tagName === "A") {
-                    console.log("More to do!");
+                    log.info(c, "We need to do another page!");
                     this.scrapePage(page_no + 1, success, failure);
                 } else {
-                    console.log("On last page!");
+                    log.info(c, "Finished last page!");
                     success();
                 }
             }.bind(this), function() {
@@ -223,15 +240,25 @@ var Scraper = function() {
         }.bind(this));
     };
 
-    this.scrapePage(0);
+    this.scrapePage(0, function() {
+        // success
+        log.info("Finished!");
+    }, function() {
+        throw new Error("WTF!");
+    });
 };
 
 var CardScience = function() {
     console.log("Welcome to CardScience.");
     var options = nomnom.opts({
-        installdb : {
+        installdb: {
             abbr: "i",
             help: "Install design documents into CouchDB",
+            flag: true
+        },
+        console: {
+            abbr: "c",
+            help: "Start a REPL with CardScience's data model gaunch loaded",
             flag: true
         }
     }).parseArgs();
@@ -240,30 +267,34 @@ var CardScience = function() {
     
 
     var initialize = function() {
-        var scraper = new Scraper();
         base.init(db);
-
         
-        if(options.installdb) {
+        
+        if(options.console) {
+            var repl = require("repl");
+            repl.start("CS> ");
+        } else if(options.installdb) {
             base.Base.updateAllDesignDocuments(function() {
-                console.log("Updated all design docs successfully.");
+                log.info(c, "Updated all design docs successfully.");
                 // now that data model is properly initialized, do initial loads from DB, etc
                 process.exit(0);
             }.bind(this), function(e) {
-                console.log("Problem updating design documents: " + e.reason);
+                log.error(c, "Problem updating design documents: " + e.reason);
                 process.exit(-1);
             });
+        } else {
+            var scraper = new Scraper();
         }
     };
 
     db.exists(function(err, exists) {
         if(err) {
-            console.log('error', "Yikes, problem connecting to CouchDB: " + err);
+            log.error('error', "Yikes, problem connecting to CouchDB: " + err);
         } else if(exists) {
-            console.log("Database is ready.");
+            log.debug("Database is ready.");
             initialize();
         } else {
-            console.log("Database does not yet exist, creating it.");
+            log.info("Database does not yet exist, creating it.");
             db.create();
             initialize();
         }
@@ -272,8 +303,8 @@ var CardScience = function() {
 
 new CardScience(function() {
     // success
-    console.log("Success!");
+    log.info(c, "Success!");
 }, function() {
     // failure
-    console.log("Problems fetching the pages, giving up.");
+    log.error(c, "Problems fetching the pages, giving up.");
 });
