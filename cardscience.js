@@ -26,10 +26,10 @@ var Scraper = function() {
     // http://gatherer.wizards.com/Pages/Search/Default.aspx?page=0&output=standard&special=true&format=%5B%22Standard%22%5D
 
     // TODO the "format" part of the query (which is basically
-    // "legality"), is significant.  we want to remember that.
-    // however, whenever we update, we'll have to be mindful that
-    // cards we no longer see in that query will have to be removed
-    // from that format set.
+    // "legality"), is significant.  we want to remember that in our
+    // database.  however, whenever we update, we'll have to be
+    // mindful that cards we no longer see in that query will have to
+    // be removed from that format set.
 
     // TODO the <img> tags inside the card text fields should be
     // distilled into semantic tags of some sort.  not necessarily
@@ -95,6 +95,47 @@ var Scraper = function() {
                 // share a MultiverseID.  We'll leave mid as the
                 // original, although that will mean that the mid
                 // field will no longer be guaranteed unique.
+
+                // The new "innistrad" set apparently has a concept of
+                // a double-sided card (seems silly to me, but there
+                // it is).  We'll see how those appear on gatherer,
+                // but my approach for dealing with composite cards
+                // should apply to that as well.
+
+                // in order to deal with these different types of
+                // cards, it might be reasonable to have subcards
+                // instead of separate cards.  this better reflects
+                // the construction of the card, and returns
+                // MultiverseID to its role of primary key.  these
+                // subtypes could be called `facets`. For regular
+                // cards, there would be one called `base`.  For
+                // `//`-style dual cards, there would be two facets
+                // named for the two subcards (alas, this involves a
+                // bit of redundancy with the title, but alas there is
+                // no other way to repeatably identify the facets.
+
+                // It might be appropriate to add another field to
+                // identify the nature of the compositing, and thus
+                // the format of the keys used in as keys in the
+                // facets hash.  There are the `//` split cards, the
+                // Innistrad dual cards, and presumably other things.
+
+                // how will updating work?  I do want to update the
+                // documents in the DB, and not destroy them and
+                // recreate them as I do now.  However, for the above
+                // composite cards, I can't just naiively squish the
+                // contents, because I will be updating in several
+                // steps as I iterate over the HTML and encounter the
+                // separate cardItems for each facet (since it's
+                // Gatherer's approach to make seperate search result
+                // items, even though they do still have the same MID)
+                // this is awkward for deleting, because I don't want
+                // to accrue removed things.  I could do it
+                // heuristically, where I only delete things I know I
+                // can.  Gross, though.  Better would be to have the
+                // scrape job keep track of what cards its seen, and
+                // then actually replacing any old contents with the
+                // aggregated new contents.
 
                 // * integer number, say, 1, 2, 8.  Also, for the
                 //   benefit of another kind, assume English-text
