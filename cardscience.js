@@ -65,6 +65,8 @@ var Scraper = function() {
             var card_item_table = verifyElements(browser.document.querySelector(".cardItemTable"));
             var card_items = verifyElements(card_item_table.querySelectorAll("tr.cardItem"));
 
+            var found_cards = [];
+
             // TODO dang, with forEach() we can't process the items in
             // sequence, yet still wait on asynchronous things.  this
             // is useful mostly so we can handle errors.  with
@@ -130,11 +132,12 @@ var Scraper = function() {
                 // Gatherer's approach to make seperate search result
                 // items, even though they do still have the same MID)
                 // this is awkward for deleting, because I don't want
-                // to accrue removed things.  I could do it
-                // heuristically, where I only delete things I know I
-                // can.  Gross, though.  Better would be to have the
-                // scrape job keep track of what cards its seen, and
-                // then actually replacing any old contents with the
+                // to accrue removed old crufty data elements in the
+                // card documents.  I could do it heuristically, where
+                // I only delete things I know I can.  Gross and kind
+                // of brittle, though.  Better would be to have the
+                // scrape job keep track of what cards it's seen, and
+                // then actually replace any old contents with the
                 // aggregated new contents.
 
                 // * integer number, say, 1, 2, 8.  Also, for the
@@ -167,7 +170,7 @@ var Scraper = function() {
                 // in the magic card titles
                 var new_card = {
                     title: verifyElements(card_item.querySelector("span.cardTitle a")).innerHTML,
-                    id: "mtg_card_" + set_hyperlink.query.multiverseid,
+                    _id: "mtg_card_" + set_hyperlink.query.multiverseid,
                     mid: set_hyperlink.query.multiverseid,
                     mana_cost: mana_costs,
                     converted_mana_cost: verifyElements(card_info_elem.querySelector("span.convertedManaCost")).innerHTML,
