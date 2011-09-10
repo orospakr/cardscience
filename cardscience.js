@@ -18,7 +18,23 @@ var Scraper = function() {
     var browser = new zombie.Browser({debug: true});
     browser.runScripts = false;
 
+    // corner-case cards:
+    // http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=205399
+    // http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=96966
+    // http://gatherer.wizards.com/Pages/Search/Default.aspx?name=+[pain]+[suffering]
+
     // http://gatherer.wizards.com/Pages/Search/Default.aspx?page=0&output=standard&special=true&format=%5B%22Standard%22%5D
+
+    // TODO the "format" part of the query (which is basically
+    // "legality"), is significant.  we want to remember that.
+    // however, whenever we update, we'll have to be mindful that
+    // cards we no longer see in that query will have to be removed
+    // from that format set.
+
+    // TODO the <img> tags inside the card text fields should be
+    // distilled into semantic tags of some sort.  not necessarily
+    // HTML tags.
+
     this.scrapePage = function(page_no, success, failure) {
         fetchurl = { protocol: "http",
                 host: "gatherer.wizards.com",
@@ -67,6 +83,25 @@ var Scraper = function() {
                 var mana_cost_elem = verifyElements(card_info_elem.querySelector("span.manaCost"));
                 var mana_cost_img_elems = verifyElements(mana_cost_elem.querySelectorAll("img"));
                 var mana_costs = {};
+                // TODO this isn't good enough.
+                // these are the formats:
+
+                // TODO detect multipart cards:  the title is formatted like:
+                // SideA // SideB (SideA)
+
+                // Detect it if there's `//` in the title, and set _id
+                // to be $id_$side.  however, even though they'll show
+                // up separately in the query results page, their
+                // share a MultiverseID.  We'll leave mid as the
+                // original, although that will mean that the mid
+                // field will no longer be guaranteed unique.
+
+                // * integer number, say, 1, 2, 8.  Also, for the
+                //   benefit of another kind, assume English-text
+                //   versions, such as One, Two, and so on) These are
+                //   colorless.
+                // * a name, say, Red, Blue, etc.
+                // * either of the above appended with "or". These are 
                 mana_cost_img_elems.update().forEach(function(mana_img) {
                     if(isNaN(mana_img.alt)) {
                         // it's a mana colour
