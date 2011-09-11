@@ -15,13 +15,14 @@ There is more to come!
 Usage
 -----
 
-You'll need node and npm.
+You'll need node and npm, and a local instance of CouchDB.
 
 Install dependencies:
 
     npm install
 
-Install CouchDB design documents:
+Install CouchDB design documents (right now, I assume a local CouchDB
+with a hardcoded database name of `cardscience`.  Sorry.):
 
     ./cardscience.js -i
 
