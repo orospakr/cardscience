@@ -39,7 +39,6 @@ var CardScience = function() {
     var initialize = function() {
         base.init(db);
         
-        
         if(options.console) {
             var repl = require("repl");
             repl.start("CS> ");
