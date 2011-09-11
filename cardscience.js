@@ -90,6 +90,10 @@ Scraper = function() {
                 var mana_cost_elem = verifyElements(card_info_elem.querySelector("span.manaCost"));
                 var mana_cost_img_elems = verifyElements(mana_cost_elem.querySelectorAll("img"));
 
+                var converted_mana_cost = verifyElements(card_info_elem.querySelector("span.convertedManaCost")).innerHTML;
+
+                var full_title = verifyElements(card_item.querySelector("span.cardTitle a")).innerHTML;
+
                 var mid = url.parse(set_hyperlink_elem.href, true).query.multiverseid;
                 var mana_costs = {};
                 // TODO this isn't good enough.
@@ -147,6 +151,43 @@ Scraper = function() {
                 // then actually replace any old contents with the
                 // aggregated new contents.
 
+                // right now all of the faceted cards that exist
+                // appear to use separate entries, so we can have
+                // pretty global modality as we deal with this entry.
+                // in the future, though, some of them won't.
+
+                var facet = "base";
+                var title = undefined;
+                
+                if(full_title.match(/\/\//)) {
+                    // I am a split card.  My title is in the form of:
+                    //   Facet1 // Facet2 (CurrentFacet).
+
+                    // I define these cards as having two facets, left
+                    // and right.  if you set such a card landscape,
+                    // the left and right facets are the left and
+                    // right hand sides of the card, respectively.
+
+                    // (.*)\/\/(.*)\((.*)\)
+                    var parms = full_title.match(/(.*)\/\/(.*)\((.*)\)/);
+                    var left = parms[1].strip();
+                    var right = parms[2].strip();
+                    var selected = parms[3].strip();
+
+                    if(selected === left) {
+                        facet = "left";
+                        title = left;
+                    } else if(selected === right) {
+                        facet = "right";
+                        title = right;
+                    } else {
+                        throw new Error("Malformed split-card had a bogus facet selector: " + title);
+                    }
+                } else {
+                    // I am a regular card, so facet stays as `base`
+                    title = full_title;
+                }
+
                 // * integer number, say, 1, 2, 8.  Also, for the
                 //   benefit of another kind, assume English-text
                 //   versions, such as One, Two, and so on) These are
@@ -167,7 +208,8 @@ Scraper = function() {
                         });
                     }
                 });
-                // TODO assert that length of mana_cost_list matches converted_mana_cost
+                // TODO assert that length of mana_cost_list matches
+                // converted_mana_cost
                 
                 // ANDREW START HERE
                 // look in found_cards, make sure we haven't hit it already.
@@ -182,6 +224,12 @@ Scraper = function() {
 
                 var current_card = found_cards[key];
 
+                // We want to either load the existing instance and
+                // clear it and reload it, or create a new one.
+                // However, if we have already seen this MID during
+                // this particular load sequence, we want to augment
+                // the record we've already started making, and not
+                // clear it again.
                 if(current_card === undefined) {
                     log.debug(c, "We haven't seen this card yet!")
                     // we haven't seen this card already
@@ -199,12 +247,15 @@ Scraper = function() {
                         }
                         // then, continue scrape by moving the below block in here.
                         current_card.update({
-                            title: verifyElements(card_item.querySelector("span.cardTitle a")).innerHTML,
+                            facets: {}
+                        });
+                        current_card["facets"][facet] = {
+                            title: title,
                             _id: "mtg_card_" + mid,
                             mid: mid,
                             mana_cost: mana_costs,
-                            converted_mana_cost: verifyElements(card_info_elem.querySelector("span.convertedManaCost")).innerHTML
-                        });
+                            converted_mana_cost: converted_mana_cost
+                        };
                         // TODO save it!
                         current_card.save(function() {
                             // success!
@@ -242,7 +293,7 @@ Scraper = function() {
 
     this.scrapePage(0, function() {
         // success
-        log.info("Finished!");
+        log.info(c, "Finished!");
     }, function() {
         throw new Error("WTF!");
     });
@@ -289,12 +340,12 @@ var CardScience = function() {
 
     db.exists(function(err, exists) {
         if(err) {
-            log.error('error', "Yikes, problem connecting to CouchDB: " + err);
+            log.error(c, "Yikes, problem connecting to CouchDB: " + err);
         } else if(exists) {
-            log.debug("Database is ready.");
+            log.debug(c, "Database is ready.");
             initialize();
         } else {
-            log.info("Database does not yet exist, creating it.");
+            log.info(c, "Database does not yet exist, creating it.");
             db.create();
             initialize();
         }
