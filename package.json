@@ -1,0 +1,23 @@
+{"name": "cardscience",
+ "version": "0.0.1",
+ "description": "Builds a database in CouchDB of all Magic the Gathering cards by scraping Wizards' Gatherer.",
+ "keywords": ["mtg", "card", "game", "couchdb", "rest", "scrape"],
+ "author": "Andrew Clunis <andrew@orospakr.ca>",
+ "licenses": [
+     {
+         "type": "GPLv3"
+     }
+ ],
+ "dependencies": {
+     "cradle": "~>0.5.5",
+     "nomnom": "~>1.0.0",
+     "zombie": "~>0.10.1"
+ },
+ "scripts": {
+     "run": "cardscience.js"
+ },
+ "directories": {
+     "lib": "lib"
+ },
+ "engines": ["node"]
+}
