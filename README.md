@@ -2,7 +2,7 @@ CardScience
 ===========
 
 Magic the Gathering card database. Scrapes card data from Gatherer and
-store sit in CouchDB. It will gain a REST interface and possibly a
+stores it in CouchDB. It will gain a REST interface and possibly a
 deck builder/browser web interface in the near future.
 
 This has been a fun little project to try out some of the CouchDB
