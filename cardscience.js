@@ -13,6 +13,7 @@ url = require('url');
 
 base = require("./lib/models/base");
 card = require("./lib/models/card");
+format = require("./lib/models/format");
 
 scraper = require("./lib/scraper");
 
