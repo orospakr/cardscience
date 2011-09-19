@@ -12,7 +12,8 @@
      "cradle": "~>0.5.5",
      "nomnom": "~>1.0.0",
      "zombie": "~>0.10.1",
-     "jasmine-node": "~>1.0.9"
+     "jasmine-node": "~>1.0.9",
+     "request": "~>2.1.1"
  },
  "scripts": {
      "run": "cardscience.js"
