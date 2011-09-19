@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	Card Search - Search: "Classic" - Gatherer - Magic: The Gathering
+</title><link rel="shortcut icon" href="/Images/favicon.ico" /><meta name="description" content="Gatherer is the Magic Card Database. Search for the perfect addition to your deck. Browse through cards from Magic's entire history. See cards from the most recent sets and discover what players just like you are saying about them." /><meta name="keywords" content="monitor, gatherer, magic cards, magic the gathering, black lotus, magic: the gathering, wizards of the coast, wizards, trading card game, trading cards, collectible card game, tcg, ccg, magic sets, game, multiplayer, hobby" />
+    
+    <!-- google analytics -->
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("UA-15020098-7");
+    pageTracker._setDomainName(".wizards.com");
+    pageTracker._trackPageview();
+    } catch(err) {}
+    </script>
+<link type="text/css" rel="stylesheet" media="screen" href="../../Styles/Styles.css" /></head>
+<body>
+    
+
+    <form name="aspnetForm" method="post" action="Default.aspx?page=38&amp;output=standard&amp;special=true&amp;format=%5b%22Classic%22%5d" id="aspnetForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEyMjI5ODM3NzhkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYDBTtjdGwwMCRjdGwwMCRjdGwwMCRNYWluQ29udGVudCRTZWFyY2hDb250cm9scyRTZWFyY2hDYXJkTmFtZQU8Y3RsMDAkY3RsMDAkY3RsMDAkTWFpbkNvbnRlbnQkU2VhcmNoQ29udHJvbHMkU2VhcmNoQ2FyZFR5cGVzBTtjdGwwMCRjdGwwMCRjdGwwMCRNYWluQ29udGVudCRTZWFyY2hDb250cm9scyRTZWFyY2hDYXJkVGV4dD0NS4S5r9zRScS2OJsvcAmvOCzV" />
+
+
+<script src="../../Scripts/Prototype.js" type="text/javascript"></script>
+<script src="../../Scripts/Utilities.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var addSearchConditionHandler = '/Handlers/AdvancedQuery.ashx';
+var CardDatabaseSettings = 'CardDatabaseSettings';
+var SelectingCardAction = 'NavigatesToCard';
+var inlineCardSearchHandler = '/Handlers/InlineCardSearch.ashx';
+var autoCompleteGroupBy = 'None';
+var imageHandler = '/Handlers/Image.ashx';
+var cardSearchPage = '/Pages/Search/Default.aspx';
+var cardDetailsPage = '/Pages/Card/Details.aspx';
+var UtilitiesHandler = '/Handlers/RPCUtilities.ashx';
+
+var enableCardSearchAutoComplete = true;
+var enableHintText = true;
+var enableCardSearchAutoCompleteIfNameUnchecked = false;
+
+
+
+function ClientIDs() {}
+ClientIDs.MainForm = 'aspnetForm';
+ClientIDs.MainContainer = 'ctl00_ctl00_ctl00_MainContainer';
+ClientIDs.TopBannerAdvertisementCMS = 'ctl00_ctl00_ctl00_TopBannerAdvertisementCMS';
+ClientIDs.gathererIntroText = 'ctl00_ctl00_ctl00_gathererIntroText';
+ClientIDs.gathererWelcome = 'ctl00_ctl00_ctl00_gathererWelcome';
+ClientIDs.MainContent = 'ctl00_ctl00_ctl00_MainContent';
+ClientIDs.NavigationLinks = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks';
+ClientIDs.NavigationAnchorsContainer = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks_NavigationAnchorsContainer';
+ClientIDs.Simple = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks_Simple';
+ClientIDs.Advanced = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks_Advanced';
+ClientIDs.Random = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks_Random';
+ClientIDs.Settings = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks_Settings';
+ClientIDs.Language = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks_Language';
+ClientIDs.Help = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks_Help';
+ClientIDs.Configuration = 'ctl00_ctl00_ctl00_MainContent_NavigationLinks_Configuration';
+ClientIDs.SearchControls = 'ctl00_ctl00_ctl00_MainContent_SearchControls';
+ClientIDs.SearchBoxContainer = 'ctl00_ctl00_ctl00_MainContent_SearchControls_SearchBoxContainer';
+ClientIDs.CardSearchBoxParent = 'ctl00_ctl00_ctl00_MainContent_SearchControls_CardSearchBoxParent';
+ClientIDs.CardSearchBox = 'ctl00_ctl00_ctl00_MainContent_SearchControls_CardSearchBoxParent_CardSearchBox';
+ClientIDs.searchSubmitButton = 'ctl00_ctl00_ctl00_MainContent_SearchControls_searchSubmitButton';
+ClientIDs.SearchBoxResults = 'ctl00_ctl00_ctl00_MainContent_SearchControls_SearchBoxResults';
+ClientIDs.SearchBoxResultsTitle = 'ctl00_ctl00_ctl00_MainContent_SearchControls_SearchBoxResultsTitle';
+ClientIDs.SearchBoxResultsContent = 'ctl00_ctl00_ctl00_MainContent_SearchControls_SearchBoxResultsContent';
+ClientIDs.AllResultsLink = 'ctl00_ctl00_ctl00_MainContent_SearchControls_AllResultsLink';
+ClientIDs.SearchSettings = 'ctl00_ctl00_ctl00_MainContent_SearchControls_SearchSettings';
+ClientIDs.searchControlsContainer = 'ctl00_ctl00_ctl00_MainContent_SearchControls_searchControlsContainer';
+ClientIDs.SearchCardName = 'ctl00_ctl00_ctl00_MainContent_SearchControls_SearchCardName';
+ClientIDs.SearchCardTypes = 'ctl00_ctl00_ctl00_MainContent_SearchControls_SearchCardTypes';
+ClientIDs.SearchCardText = 'ctl00_ctl00_ctl00_MainContent_SearchControls_SearchCardText';
+ClientIDs.SubContent = 'ctl00_ctl00_ctl00_MainContent_SubContent';
+ClientIDs.SubContentHeader = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContentHeader';
+ClientIDs.searchTermDisplay = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContentHeader_searchTermDisplay';
+ClientIDs.SubContentAnchors = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContentAnchors';
+ClientIDs.topPagingControlsContainer = 'ctl00_ctl00_ctl00_MainContent_SubContent_topPagingControlsContainer';
+ClientIDs.previousSearch = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch';
+ClientIDs.prevSearchContainer = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch_prevSearchContainer';
+ClientIDs.encodedSerializedParameters = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch_encodedSerializedParameters';
+ClientIDs.filterSubmit = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch_filterSubmit';
+ClientIDs.ajaxIndicatorImage = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch_ajaxIndicatorImage';
+ClientIDs.extraBreaks = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch_extraBreaks';
+ClientIDs.searchResultsContainer = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_searchResultsContainer';
+ClientIDs.sortDisplay = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sortDisplay';
+ClientIDs.searchControls = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_searchControls';
+ClientIDs.sorter = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter';
+ClientIDs.currentSort = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_currentSort';
+ClientIDs.sortBy = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_sortBy';
+ClientIDs.sortOrder = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_sortOrder';
+ClientIDs.addSort = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_addSort';
+ClientIDs.loadPreviousLink = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_loadPreviousLink';
+ClientIDs.switcher = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher';
+ClientIDs.switchStandard = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchStandard';
+ClientIDs.switchView = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchView';
+ClientIDs.switchTextChecklist = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchTextChecklist';
+ClientIDs.switchVisualSpoiler = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchVisualSpoiler';
+ClientIDs.switchTextSpoiler = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchTextSpoiler';
+ClientIDs.Nicknames = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_Nicknames';
+ClientIDs.Nickname = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_Nickname';
+ClientIDs.listRepeater = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater';
+ClientIDs.cardImageLink = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardImageLink';
+ClientIDs.cardImage = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardImage';
+ClientIDs.cardTitle = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardTitle';
+ClientIDs.cardMana = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardMana';
+ClientIDs.cardCMC = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardCMC';
+ClientIDs.cardTypes = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardTypes';
+ClientIDs.cardBottomNumbers = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardBottomNumbers';
+ClientIDs.cardText = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardText';
+ClientIDs.cardSetCurrent = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardSetCurrent';
+ClientIDs.otherSetSection = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_otherSetSection';
+ClientIDs.cardSets = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardSets';
+ClientIDs.DidYouMean = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_DidYouMean';
+ClientIDs.DidYouMeanText = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_DidYouMeanText';
+ClientIDs.DidYouMeanCandidates = 'ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_DidYouMeanCandidates';
+ClientIDs.bottomPagingControlsContainer = 'ctl00_ctl00_ctl00_MainContent_SubContent_bottomPagingControlsContainer';
+ClientIDs.loginLinkPlaceholder = 'ctl00_ctl00_ctl00_loginLinkPlaceholder';
+ClientIDs.CopyrightYear = 'ctl00_ctl00_ctl00_CopyrightYear';
+ClientIDs.RightBannerAdvertisement = 'ctl00_ctl00_ctl00_RightBannerAdvertisement';
+var textBoxHash = new Hash( { ctl00_ctl00_ctl00_MainContent_SearchControls_CardSearchBoxParent_CardSearchBox: 'Search Terms...' } );//]]>
+</script>
+
+<script src="../../Scripts/Constants.js" type="text/javascript"></script>
+<script src="../../Scripts/CardDatabase.js" type="text/javascript"></script>
+<script src="../../Scripts/AdvancedSearch.js" type="text/javascript"></script>
+<script src="../../Scripts/SearchControls.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+Event.observe(window, 'load', RetrieveCurrentSearchConditions);
+//]]>
+</script>
+
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCgK9gMDHDAKw+7DyCgKKqPSlCQLIiJiWCgLgiMDeAwKBjNExAu3S+MYMAp6/k60OAtqnqaUNAv+705EBvakLYBxjDyqD+LyQd+/nJkkfl9g=" />
+    <div style="width: 100%; height: 1px;">
+    </div>
+    <div id="ctl00_ctl00_ctl00_MainContainer" class="mainContainer">
+        <div class="leftContainer">
+            <div id="ctl00_ctl00_ctl00_TopBannerAdvertisementCMS" class="topBanner"><p><a href="http://www.wizards.com/Magic/Novels/Product.aspx?x=mtg/novels/product/pathoftheplaneswalker2"><img src="http://media.wizards.com/images/magic/daily/ads/pathII_728.jpg" /></a></p></div>
+            <div class="background">
+                <div class="top">
+                    <div class="left">
+                    </div>
+                    <div class="middle">
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="middle">
+                        <div class="middleright">
+                            <div class="gathererContent">
+                                
+
+<div class="logo">
+    <a class="magic" href="http://www.magicthegathering.com"></a>
+	<a href="../Default.aspx" class="cardDatabase"></a>
+</div>
+
+                                
+                                
+    <div id="ctl00_ctl00_ctl00_MainContent_NavigationLinks_NavigationAnchorsContainer" class="searchcontrollinks">
+    <a href="../Default.aspx" id="ctl00_ctl00_ctl00_MainContent_NavigationLinks_Simple" class="current">Simple</a>
+    <a href="../Advanced.aspx" id="ctl00_ctl00_ctl00_MainContent_NavigationLinks_Advanced">Advanced</a>
+    <a href="../Card/Details.aspx?action=random" id="ctl00_ctl00_ctl00_MainContent_NavigationLinks_Random">Random Card</a>
+    <a href="../Settings.aspx" id="ctl00_ctl00_ctl00_MainContent_NavigationLinks_Settings">Settings</a>
+    <a href="../Language.aspx" id="ctl00_ctl00_ctl00_MainContent_NavigationLinks_Language">Language</a>
+    <a href="../Help.aspx" id="ctl00_ctl00_ctl00_MainContent_NavigationLinks_Help">Help</a>
+    
+</div>
+
+    
+    
+<div class="searchcontrols">
+    <div id="ctl00_ctl00_ctl00_MainContent_SearchControls_SearchBoxContainer" class="searchboxcontainertop">
+        
+
+<div class="textbox" id="ctl00_ctl00_ctl00_MainContent_SearchControls_CardSearchBoxParent" style=""><input name="ctl00$ctl00$ctl00$MainContent$SearchControls$CardSearchBoxParent$CardSearchBox" type="text" id="ctl00_ctl00_ctl00_MainContent_SearchControls_CardSearchBoxParent_CardSearchBox" class="textboxinput" onblur="SetCurrentControlBlur(event)" onfocus="SetCurrentControlFocus(event, this);" autocomplete="off" maxlength="50" /></div>
+    </div>
+    <div class="searchsubmit">
+        <input type="submit" name="ctl00$ctl00$ctl00$MainContent$SearchControls$searchSubmitButton" value="Search" id="ctl00_ctl00_ctl00_MainContent_SearchControls_searchSubmitButton" class="searchbutton" />
+    </div>
+    <br class="clear" />
+    <!-- Autocomplete Results -->
+    <div id="ctl00_ctl00_ctl00_MainContent_SearchControls_SearchBoxResults" class="searchresultscontainertop">
+        <div class="smallGreyBorder">
+            <b class="ct"><b></b></b>
+            <div class="simpleRoundedBoxTitleGrey">
+                <span id="ctl00_ctl00_ctl00_MainContent_SearchControls_SearchBoxResultsTitle" class="boldtitle">Results </span>
+            </div>
+            <div id="ctl00_ctl00_ctl00_MainContent_SearchControls_SearchBoxResultsContent" style="background-color: #b7b7b7;">
+            </div>
+            <div class="simpleRoundedBoxFooterGrey">
+                <span><a href="javascript:void(0);" id="ctl00_ctl00_ctl00_MainContent_SearchControls_AllResultsLink" class="autoCompleteAllResults">
+                    All Results</a></span></div>
+            <b class="cc"><b></b></b>
+        </div>
+    </div>
+    <!-- /Autocomplete Results -->
+    <!-- Search Settings -->
+    <div id="ctl00_ctl00_ctl00_MainContent_SearchControls_SearchSettings" class="searchsettingsdisplaytop">
+        <div class="searchsettings">
+            <a href="javascript:void(0);" onclick="SaveVisibleArea(event, this, ClientIDs.searchControlsContainer, 'searchControlsContainer', false); return ToggleSearchSettings(event, this);"
+                class="expandedNode"><b>using...</b></a>
+            <div id="ctl00_ctl00_ctl00_MainContent_SearchControls_searchControlsContainer">
+            <ul>
+                <li>
+                    <input name="ctl00$ctl00$ctl00$MainContent$SearchControls$SearchCardName" type="checkbox" id="ctl00_ctl00_ctl00_MainContent_SearchControls_SearchCardName" checked="checked" onclick="UpdateSimpleSearchFields" />
+                    Name</li>
+                <li>
+                    <input name="ctl00$ctl00$ctl00$MainContent$SearchControls$SearchCardTypes" type="checkbox" id="ctl00_ctl00_ctl00_MainContent_SearchControls_SearchCardTypes" onclick="UpdateSimpleSearchFields" />
+                    Types</li>
+                <li>
+                    <input name="ctl00$ctl00$ctl00$MainContent$SearchControls$SearchCardText" type="checkbox" id="ctl00_ctl00_ctl00_MainContent_SearchControls_SearchCardText" onclick="UpdateSimpleSearchFields" />
+                    Text</li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Search Settings -->
+</div>
+    <br class="clear" />
+    
+    
+    <div class="contentcontainer">
+        <div class="smallGreyBorder">
+            <b class="dt"><b></b></b>
+            <div class="simpleRoundedBoxTitleGreyTall">
+                <div class="contentTitle">
+                    
+Search:<span id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContentHeader_searchTermDisplay"><i>"Classic"</i>  (9000)</span>
+
+                </div>
+                
+                
+                <div class="pagingcontrols">
+                    <div id="ctl00_ctl00_ctl00_MainContent_SubContent_topPagingControlsContainer" class="paging"><a href="/Pages/Search/Default.aspx?page=0&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">&lt;&lt;</a><span>&nbsp;</span><a href="/Pages/Search/Default.aspx?page=37&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">&lt;&nbsp;</a>
+                    <a href="/Pages/Search/Default.aspx?page=38&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D" style="text-decoration:underline;">39</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=39&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">40</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=40&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">41</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=41&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">42</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=42&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">43</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=43&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">44</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=44&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">45</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=45&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">46</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=46&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">47</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=47&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">48</a><a href="/Pages/Search/Default.aspx?page=39&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">&nbsp;&gt;</a><span>&nbsp;</span><a href="/Pages/Search/Default.aspx?page=359&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">&gt;&gt;</a></div>
+                </div>
+            </div>
+            
+    
+<div class="filterList">
+<div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch_prevSearchContainer" class="smallGreyBorderBottom">
+    <a class="expandedNode" href="javascript:void(0);" onclick="SaveVisibleArea(event, this, 'filterControls', 'filterControls', false); return ToggleFilterOptions(event, this);">
+    <b>Search Criteria</b>
+    </a>
+    <div id="filterControls">
+        <input name="ctl00$ctl00$ctl00$MainContent$SubContent$SubContent$previousSearch$encodedSerializedParameters" type="hidden" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch_encodedSerializedParameters" />
+        
+        <div id="ajaxIndicator" class="indicator" style="display: none;">
+            <img id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_previousSearch_ajaxIndicatorImage" src="../../Images/ajax_indicator.gif" alt="Updating..." border="0" />
+            Updating search parameters...
+        </div>
+        
+        <div id="displayFilters" class="filters">None yet.</div>
+    </div>
+</div>
+</div>
+    <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_searchResultsContainer">
+<div class="cardList">
+    <!-- Options Container -->
+    <div class="smallGreyBorderBottom">
+        &nbsp;<a class="expandedNode" onclick="SaveVisibleArea(event, this, 'searchControls', 'searchControls', false); return ToggleSearchOptions(event, this);"
+            href="javascript:void(0);"><b>Search Result Options</b></a>
+        
+        <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_searchControls" class="controls" style="display:block;">
+            
+
+<div class="sorter">
+    <span class="sortField">special (asc) <span><a class="remove" href="/Pages/Search/Default.aspx?page=38&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D&amp;removesortkey=special">x</a></span></span> > <span class="sortField">Name (asc) <span><a class="remove" href="/Pages/Search/Default.aspx?page=38&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D&amp;removesortkey=abc">x</a></span></span>
+    <ul class="opts">
+        <li>
+            Additional Sort:
+            
+            <select name="ctl00$ctl00$ctl00$MainContent$SubContent$SubContent$ctl00$sorter$sortBy" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_sortBy">
+	<option value="cn">Collector's Number</option>
+	<option value="color">Color</option>
+	<option value="mana">Color Weight</option>
+	<option value="rating">Community Rating</option>
+	<option value="cmc">Converted Mana Cost</option>
+	<option value="abc">Name</option>
+	<option value="p">Power</option>
+	<option value="rarity">Rarity</option>
+	<option value="t">Toughness</option>
+</select>
+
+            <select name="ctl00$ctl00$ctl00$MainContent$SubContent$SubContent$ctl00$sorter$sortOrder" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_sortOrder">
+	<option value="asc">Ascending</option>
+	<option value="desc">Descending</option>
+</select>
+            <input type="submit" name="ctl00$ctl00$ctl00$MainContent$SubContent$SubContent$ctl00$sorter$addSort" value="Add" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_addSort" />
+        </li>
+    </ul>
+    <br />
+    <a href="/Pages/Advanced.aspx?action=advanced&format=[&quot;Classic&quot;]&output=standard&special=true" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_sorter_loadPreviousLink" class="refineSearchLink">Refine Search</a>
+</div>
+            
+    
+<div class="switcher">
+    <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchStandard" href="Default.aspx?output=standard&amp;page=38&amp;special=true&amp;format=%5b%22Classic%22%5d" style="text-decoration:underline;">Switch to Standard</a>
+
+    <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchView" href="Default.aspx?output=compact&amp;page=38&amp;special=true&amp;format=%5b%22Classic%22%5d">Switch to Compact</a>
+
+    <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchTextChecklist" href="Default.aspx?output=checklist&amp;page=38&amp;special=true&amp;format=%5b%22Classic%22%5d">Switch to Checklist</a>
+
+    <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchVisualSpoiler" href="Default.aspx?output=spoiler&amp;method=visual&amp;page=38&amp;special=true&amp;format=%5b%22Classic%22%5d">Switch to Visual Spoiler</a>
+
+    <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_switcher_switchTextSpoiler" href="Default.aspx?output=spoiler&amp;method=text&amp;page=38&amp;special=true&amp;format=%5b%22Classic%22%5d">Switch to Text Spoiler</a>  
+</div>
+
+        </div>
+        <div class="clear">
+        </div>
+        <b class="bb"><b></b></b>
+    </div>
+    <!-- End Options Container -->
+    
+    <table class="cardItemTable" cellpadding="0" cellspacing="0">
+        <tr><td>
+        
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=3432" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=3432&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardImage" width="95" height="132" alt="Burning Palm Efreet" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=3432">Burning Palm Efreet</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">4</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Efreet
+                                (2/2)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p><img src="/Handlers/Image.ashx?size=small&amp;name=1&amp;type=symbol" alt="1" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" />: Burning Palm Efreet deals 2 damage to target creature with flying and that creature loses flying until end of turn.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl00_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=3432"><img title="Mirage (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=MI&amp;size=small&amp;rarity=U" alt="Mirage (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=31797" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl01_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=31797&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl01_cardImage" width="95" height="132" alt="Burning Sands" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl01_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=31797">Burning Sands</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=3&amp;type=symbol" alt="3" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">5</span>)
+                            <br />
+                            <span class="typeLine">
+                                Enchantment
+                                </span>
+                            <div class="rulesText">
+                                <p>Whenever a creature dies, that creature's controller sacrifices a land.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl01_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=31797"><img title="Odyssey (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=OD&amp;size=small&amp;rarity=R" alt="Odyssey (Rare)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=3433" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl02_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=3433&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl02_cardImage" width="95" height="132" alt="Burning Shield Askari" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl02_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=3433">Burning Shield Askari</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">3</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Human Knight
+                                (2/2)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p>Flanking <i>(Whenever a creature without flanking blocks this creature, the blocking creature gets -1/-1 until end of turn.)</i></p><p><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" />: Burning Shield Askari gains first strike until end of turn.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl02_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=3433"><img title="Mirage (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=MI&amp;size=small&amp;rarity=C" alt="Mirage (Common)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=34403" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl03_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=34403&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl03_cardImage" width="95" height="132" alt="Burning Wish" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl03_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=34403">Burning Wish</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=1&amp;type=symbol" alt="1" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">2</span>)
+                            <br />
+                            <span class="typeLine">
+                                Sorcery
+                                </span>
+                            <div class="rulesText">
+                                <p>You may choose a sorcery card you own from outside the game, reveal that card, and put it into your hand. Exile Burning Wish.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl03_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=34403"><img title="Judgment (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=JUD&amp;size=small&amp;rarity=R" alt="Judgment (Rare)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=50234" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl04_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=50234&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl04_cardImage" width="95" height="132" alt="Burning-Eye Zubera" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl04_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=50234">Burning-Eye Zubera</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">4</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Zubera Spirit
+                                (3/3)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p>When Burning-Eye Zubera dies, if 4 or more damage was dealt to it this turn, Burning-Eye Zubera deals 3 damage to target creature or player.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl04_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=50234"><img title="Saviors of Kamigawa (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=SOK&amp;size=small&amp;rarity=U" alt="Saviors of Kamigawa (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=96898" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl05_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=96898&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl05_cardImage" width="95" height="132" alt="Burning-Tree Bloodscale" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl05_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=96898">Burning-Tree Bloodscale</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=G&amp;type=symbol" alt="Green" align="absbottom" /></span> (<span class="convertedManaCost">4</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Viashino Berserker
+                                (2/2)</span>
+                            <div class="rulesText">
+                                <p>Bloodthirst 1 <i>(If an opponent was dealt damage this turn, this creature enters the battlefield with a +1/+1 counter on it.)</i></p><p><img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" />: Target creature can't block Burning-Tree Bloodscale this turn.</p><p><img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=G&amp;type=symbol" alt="Green" align="absbottom" />: Target creature blocks Burning-Tree Bloodscale this turn if able.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl05_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=96898"><img title="Guildpact (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=GPT&amp;size=small&amp;rarity=C" alt="Guildpact (Common)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=97205" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl06_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=97205&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl06_cardImage" width="95" height="132" alt="Burning-Tree Shaman" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl06_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=97205">Burning-Tree Shaman</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=1&amp;type=symbol" alt="1" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=G&amp;type=symbol" alt="Green" align="absbottom" /></span> (<span class="convertedManaCost">3</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Centaur Shaman
+                                (3/4)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p>Whenever a player activates an ability that isn't a mana ability, Burning-Tree Shaman deals 1 damage to that player.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl06_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=97205"><img title="Guildpact (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=GPT&amp;size=small&amp;rarity=R" alt="Guildpact (Rare)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=184762" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl07_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=184762&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl07_cardImage" width="95" height="132" alt="Burnout" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl07_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=184762">Burnout</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=1&amp;type=symbol" alt="1" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">2</span>)
+                            <br />
+                            <span class="typeLine">
+                                Instant
+                                </span>
+                            <div class="rulesText">
+                                <p>Counter target instant spell if it's blue.</p><p>Draw a card at the beginning of the next turn's upkeep.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl07_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=184762"><img title="Masters Edition II (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=ME2&amp;size=small&amp;rarity=U" alt="Masters Edition II (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl07_otherSetSection" class="otherSetSection">
+                            <div>
+                                <i>Other Versions</i></div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl07_cardSets" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=3166"><img title="Alliances (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=AL&amp;size=small&amp;rarity=U" alt="Alliances (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=50305" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl08_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=50305&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl08_cardImage" width="95" height="132" alt="Burr Grafter" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl08_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=50305">Burr Grafter</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=3&amp;type=symbol" alt="3" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=G&amp;type=symbol" alt="Green" align="absbottom" /></span> (<span class="convertedManaCost">4</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Spirit
+                                (2/2)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p>Sacrifice Burr Grafter: Target creature gets +2/+2 until end of turn.</p><p>Soulshift 3 <i>(When this creature dies, you may return target Spirit card with converted mana cost 3 or less from your graveyard to your hand.)</i></p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl08_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=50305"><img title="Champions of Kamigawa (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=CHK&amp;size=small&amp;rarity=C" alt="Champions of Kamigawa (Common)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=152694" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl09_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=152694&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl09_cardImage" width="95" height="132" alt="Burrenton Bombardier" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl09_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=152694">Burrenton Bombardier</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=W&amp;type=symbol" alt="White" align="absbottom" /></span> (<span class="convertedManaCost">3</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Kithkin Soldier
+                                (2/2)</span>
+                            <div class="rulesText">
+                                <p>Flying</p><p>Reinforce 2—<img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=W&amp;type=symbol" alt="White" align="absbottom" /> <i>(<img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=W&amp;type=symbol" alt="White" align="absbottom" />, Discard this card: Put two +1/+1 counters on target creature.)</i></p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl09_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=152694"><img title="Morningtide (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=MOR&amp;size=small&amp;rarity=C" alt="Morningtide (Common)" border="0" /></a>
+</div>
+                        </div>
+                        <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl09_otherSetSection" class="otherSetSection">
+                            <div>
+                                <i>Other Versions</i></div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl09_cardSets" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=222770"><img title="Duel Decks: Elspeth vs. Tezzeret (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=DDF&amp;size=small&amp;rarity=C" alt="Duel Decks: Elspeth vs. Tezzeret (Common)" border="0" /></a>
+</div>
+                        </div>
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=139395" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl10_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=139395&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl10_cardImage" width="95" height="132" alt="Burrenton Forge-Tender" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl10_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=139395">Burrenton Forge-Tender</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=W&amp;type=symbol" alt="White" align="absbottom" /></span> (<span class="convertedManaCost">1</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Kithkin Wizard
+                                (1/1)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p>Protection from red</p><p>Sacrifice Burrenton Forge-Tender: Prevent all damage a red source of your choice would deal this turn.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl10_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=139395"><img title="Lorwyn (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=LRW&amp;size=small&amp;rarity=U" alt="Lorwyn (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=152668" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl11_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=152668&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl11_cardImage" width="95" height="132" alt="Burrenton Shield-Bearers" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl11_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=152668">Burrenton Shield-Bearers</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=4&amp;type=symbol" alt="4" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=W&amp;type=symbol" alt="White" align="absbottom" /></span> (<span class="convertedManaCost">5</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Kithkin Soldier
+                                (3/3)</span>
+                            <div class="rulesText">
+                                <p>Whenever Burrenton Shield-Bearers attacks, target creature gets +0/+3 until end of turn.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl11_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=152668"><img title="Morningtide (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=MOR&amp;size=small&amp;rarity=C" alt="Morningtide (Common)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=177558" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl12_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=177558&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl12_cardImage" width="95" height="132" alt="Burst Lightning" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl12_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=177558">Burst Lightning</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">1</span>)
+                            <br />
+                            <span class="typeLine">
+                                Instant
+                                </span>
+                            <br />
+                            <div class="rulesText">
+                                <p>Kicker <img src="/Handlers/Image.ashx?size=small&amp;name=4&amp;type=symbol" alt="4" align="absbottom" /> <i>(You may pay an additional <img src="/Handlers/Image.ashx?size=small&amp;name=4&amp;type=symbol" alt="4" align="absbottom" /> as you cast this spell.)</i></p><p>Burst Lightning deals 2 damage to target creature or player. If Burst Lightning was kicked, it deals 4 damage to that creature or player instead.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl12_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=177558"><img title="Zendikar (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=ZEN&amp;size=small&amp;rarity=C" alt="Zendikar (Common)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=191061" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl13_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=191061&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl13_cardImage" width="95" height="132" alt="Burst of Speed" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl13_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=191061">Burst of Speed</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">1</span>)
+                            <br />
+                            <span class="typeLine">
+                                Sorcery
+                                </span>
+                            <div class="rulesText">
+                                <p>Creatures you control gain haste until end of turn. <i>(They can attack and <img src="/Handlers/Image.ashx?size=small&amp;name=tap&amp;type=symbol" alt="Tap" align="absbottom" /> even if they just came under your control.)</i></p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl13_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=191061"><img title="Magic 2010 (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=M10&amp;size=small&amp;rarity=C" alt="Magic 2010 (Common)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=78600" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl14_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=78600&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl14_cardImage" width="95" height="132" alt="Bushi Tenderfoot" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl14_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=78600">Bushi Tenderfoot</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=W&amp;type=symbol" alt="White" align="absbottom" /></span> (<span class="convertedManaCost">1</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Human Soldier
+                                (1/1)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p>When a creature dealt damage by Bushi Tenderfoot this turn dies, flip Bushi Tenderfoot.</p><p></p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl14_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=78600"><img title="Champions of Kamigawa (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=CHK&amp;size=small&amp;rarity=U" alt="Champions of Kamigawa (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=126218&part=Bust" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl15_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=126218&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl15_cardImage" width="95" height="132" alt="Boom // Bust (Bust)" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl15_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=126218&amp;part=Bust">Boom // Bust (Bust)</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=5&amp;type=symbol" alt="5" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">6</span>)
+                            <br />
+                            <span class="typeLine">
+                                Sorcery
+                                </span>
+                            <div class="rulesText">
+                                <p></p><p>Destroy all lands.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl15_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=126218"><img title="Planar Chaos (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=PLC&amp;size=small&amp;rarity=R" alt="Planar Chaos (Rare)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=247537" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl16_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=247537&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl16_cardImage" width="95" height="132" alt="Butcher of Malakir" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl16_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=247537">Butcher of Malakir</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=5&amp;type=symbol" alt="5" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /></span> (<span class="convertedManaCost">7</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Vampire Warrior
+                                (5/4)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p>Flying</p><p>Whenever Butcher of Malakir or another creature you control dies, each opponent sacrifices a creature.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl16_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=247537"><img title="Magic: The Gathering-Commander (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=CMD&amp;size=small&amp;rarity=R" alt="Magic: The Gathering-Commander (Rare)" border="0" /></a>
+</div>
+                        </div>
+                        <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl16_otherSetSection" class="otherSetSection">
+                            <div>
+                                <i>Other Versions</i></div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl16_cardSets" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=197125"><img title="Worldwake (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=WWK&amp;size=small&amp;rarity=R" alt="Worldwake (Rare)" border="0" /></a>
+</div>
+                        </div>
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=39658" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl17_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=39658&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl17_cardImage" width="95" height="132" alt="Butcher Orgg" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl17_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=39658">Butcher Orgg</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=4&amp;type=symbol" alt="4" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=R&amp;type=symbol" alt="Red" align="absbottom" /></span> (<span class="convertedManaCost">7</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Orgg
+                                (6/6)</span>
+                            <div class="rulesText">
+                                <p>You may assign Butcher Orgg's combat damage divided as you choose among defending player and/or any number of creatures he or she controls.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl17_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=39658"><img title="Onslaught (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=ONS&amp;size=small&amp;rarity=R" alt="Onslaught (Rare)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=39545" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl18_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=39545&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl18_cardImage" width="95" height="132" alt="Cabal Archon" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl18_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=39545">Cabal Archon</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /></span> (<span class="convertedManaCost">3</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Human Cleric
+                                (2/2)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" />, Sacrifice a Cleric: Target player loses 2 life and you gain 2 life.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl18_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=39545"><img title="Onslaught (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=ONS&amp;size=small&amp;rarity=U" alt="Onslaught (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=29896" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl19_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=29896&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl19_cardImage" width="95" height="132" alt="Cabal Coffers" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl19_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=29896">Cabal Coffers</a></span> <span class="manaCost">
+                                    </span> (<span class="convertedManaCost">0</span>)
+                            <br />
+                            <span class="typeLine">
+                                Land
+                                </span>
+                            <div class="rulesText">
+                                <p><img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" />, <img src="/Handlers/Image.ashx?size=small&amp;name=tap&amp;type=symbol" alt="Tap" align="absbottom" />: Add <img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /> to your mana pool for each Swamp you control.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl19_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=29896"><img title="Torment (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=TOR&amp;size=small&amp;rarity=U" alt="Torment (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl19_otherSetSection" class="otherSetSection">
+                            <div>
+                                <i>Other Versions</i></div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl19_cardSets" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=205421"><img title="Planechase (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=HOP&amp;size=small&amp;rarity=U" alt="Planechase (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=44491" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl20_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=44491&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl20_cardImage" width="95" height="132" alt="Cabal Conditioning" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl20_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=44491">Cabal Conditioning</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=6&amp;type=symbol" alt="6" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /></span> (<span class="convertedManaCost">7</span>)
+                            <br />
+                            <span class="typeLine">
+                                Sorcery
+                                </span>
+                            <br />
+                            <div class="rulesText">
+                                <p>Any number of target players each discard a number of cards equal to the highest converted mana cost among permanents you control.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl20_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=44491"><img title="Scourge (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=SCG&amp;size=small&amp;rarity=R" alt="Scourge (Rare)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=39851" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl21_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=39851&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl21_cardImage" width="95" height="132" alt="Cabal Executioner" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl21_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=39851">Cabal Executioner</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /></span> (<span class="convertedManaCost">4</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Human Cleric
+                                (2/2)</span>
+                            <div class="rulesText">
+                                <p>Whenever Cabal Executioner deals combat damage to a player, that player sacrifices a creature.</p><p>Morph <img src="/Handlers/Image.ashx?size=small&amp;name=3&amp;type=symbol" alt="3" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /> <i>(You may cast this face down as a 2/2 creature for <img src="/Handlers/Image.ashx?size=small&amp;name=3&amp;type=symbol" alt="3" align="absbottom" />. Turn it face up any time for its morph cost.)</i></p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl21_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=39851"><img title="Onslaught (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=ONS&amp;size=small&amp;rarity=U" alt="Onslaught (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=29730" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl22_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=29730&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl22_cardImage" width="95" height="132" alt="Cabal Inquisitor" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl22_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=29730">Cabal Inquisitor</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=1&amp;type=symbol" alt="1" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /></span> (<span class="convertedManaCost">2</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Human Minion
+                                (1/1)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p>Threshold — <img src="/Handlers/Image.ashx?size=small&amp;name=1&amp;type=symbol" alt="1" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" />, <img src="/Handlers/Image.ashx?size=small&amp;name=tap&amp;type=symbol" alt="Tap" align="absbottom" />, Exile two cards from your graveyard: Target player discards a card. Activate this ability only any time you could cast a sorcery, and only if seven or more cards are in your graveyard.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl22_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=29730"><img title="Odyssey (Common)" src="../../Handlers/Image.ashx?type=symbol&amp;set=OD&amp;size=small&amp;rarity=C" alt="Odyssey (Common)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem oddItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=39750" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl23_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=39750&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl23_cardImage" width="95" height="132" alt="Cabal Interrogator" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl23_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=39750">Cabal Interrogator</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=1&amp;type=symbol" alt="1" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /></span> (<span class="convertedManaCost">2</span>)
+                            <br />
+                            <span class="typeLine">
+                                Creature  — Zombie Wizard
+                                (1/1)</span>
+                            <div class="rulesText">
+                                <p><img src="/Handlers/Image.ashx?size=small&amp;name=X&amp;type=symbol" alt="Variable Colorless" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" />, <img src="/Handlers/Image.ashx?size=small&amp;name=tap&amp;type=symbol" alt="Tap" align="absbottom" />: Target player reveals X cards from his or her hand and you choose one of them. That player discards that card. Activate this ability only any time you could cast a sorcery.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl23_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=39750"><img title="Scourge (Uncommon)" src="../../Handlers/Image.ashx?type=symbol&amp;set=SCG&amp;size=small&amp;rarity=U" alt="Scourge (Uncommon)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+                <table>
+                <tr class="cardItem evenItem">
+                    <td class="leftCol">
+                        <div class="clear"></div>
+                        <a href="../Card/Details.aspx?multiverseid=29943" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl24_cardImageLink" onclick="return CardLinkAction(event, this, 'SameWindow');">
+                            <img src="../../Handlers/Image.ashx?multiverseid=29943&amp;type=card" id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl24_cardImage" width="95" height="132" alt="Cabal Patriarch" border="0" />
+                        </a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="middleCol">
+                        <div class="clear"></div>
+                        <div class="cardInfo">
+                            <span class="cardTitle">
+                                <a id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl24_cardTitle" onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=29943">Cabal Patriarch</a></span> <span class="manaCost">
+                                    <img src="/Handlers/Image.ashx?size=small&amp;name=3&amp;type=symbol" alt="3" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" /></span> (<span class="convertedManaCost">6</span>)
+                            <br />
+                            <span class="typeLine">
+                                Legendary Creature  — Human Wizard
+                                (5/5)</span>
+                            <br />
+                            <div class="rulesText">
+                                <p><img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" />, Sacrifice a creature: Target creature gets -2/-2 until end of turn.</p><p><img src="/Handlers/Image.ashx?size=small&amp;name=2&amp;type=symbol" alt="2" align="absbottom" /><img src="/Handlers/Image.ashx?size=small&amp;name=B&amp;type=symbol" alt="Black" align="absbottom" />, Exile a creature card from your graveyard: Target creature gets -2/-2 until end of turn.</p></div>
+                        </div>
+                    </td>
+                    <td class="rightCol setVersions">
+                        <div class="clear"></div>
+                        <div>
+                            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_SubContent_ctl00_listRepeater_ctl24_cardSetCurrent" class="rightCol">
+	<a onclick="return CardLinkAction(event, this, 'SameWindow');" href="../Card/Details.aspx?multiverseid=29943"><img title="Odyssey (Rare)" src="../../Handlers/Image.ashx?type=symbol&amp;set=OD&amp;size=small&amp;rarity=R" alt="Odyssey (Rare)" border="0" /></a>
+</div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                </table>
+            
+        </td></tr>
+    </table>
+</div>
+</div>
+    
+    
+
+            <div class="clear"></div>
+            <div id="ctl00_ctl00_ctl00_MainContent_SubContent_bottomPagingControlsContainer">
+            <div class="pagingControls"><a href="/Pages/Search/Default.aspx?page=0&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">&lt;&lt;</a><span>&nbsp;</span><a href="/Pages/Search/Default.aspx?page=37&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">&lt;&nbsp;</a><a href="/Pages/Search/Default.aspx?page=38&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D" style="text-decoration:underline;">39</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=39&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">40</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=40&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">41</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=41&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">42</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=42&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">43</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=43&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">44</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=44&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">45</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=45&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">46</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=46&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">47</a><span>,&nbsp;</span><a href="/Pages/Search/Default.aspx?page=47&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">48</a><a href="/Pages/Search/Default.aspx?page=39&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">&nbsp;&gt;</a><span>&nbsp;</span><a href="/Pages/Search/Default.aspx?page=359&amp;output=standard&amp;special=true&amp;format=%5B%22Classic%22%5D">&gt;&gt;</a></div></div>
+            <b class="dd"><b></b></b>
+        </div>
+    </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="left">
+                        </div>
+                        <div class="middle">
+                        </div>
+                        <div class="right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <a href="http://www.magicthegathering.com">magicthegathering.com</a>&nbsp;&nbsp;
+                <a href="http://www.wizards.com/magic/Digital/MagicOnline.aspx">Magic: The Gathering
+                    Online</a>&nbsp;&nbsp; <a href="../Settings.aspx">Settings</a>&nbsp;&nbsp;
+                <a href="../Language.aspx">Language</a>&nbsp;&nbsp; <a href="../Help.aspx">Help</a>&nbsp;|&nbsp;
+                    <a href="../Login.aspx?returnurl=%2fPages%2fSearch%2fDefault.aspx%3fpage%3d38%26output%3dstandard%26special%3dtrue%26format%3d%255B%2522Classic%2522%255D">Login</a>
+                <div class="wizardsFooterSection">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &copy; 1995 - 2011 <a href="http://www.wizards.com">Wizards of the Coast</a> LLC,
+                    a subsidiary of Hasbro, Inc. All Rights Reserved.
+                </div>
+                <br />
+                <span class="smalldate"></span>
+            </div>
+        </div>
+        <div class="rightContainer">
+            
+        </div>
+    </div>
+    </form>
+</body>
+</html>

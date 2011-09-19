@@ -5,7 +5,6 @@ csutil = require("./lib/util");
 
 cradle = require("cradle");
 nomnom = require("nomnom");
-zombie = require("zombie");
 
 log = require("./lib/logging");
 
@@ -31,14 +30,20 @@ var CardScience = function() {
             abbr: "c",
             help: "Start a REPL with CardScience's data model gaunch loaded",
             flag: true
+        },
+        dbname: {
+            abbr: "d",
+            help: "Database name"
         }
     }).parseArgs();
     var connection = new cradle.Connection();
-    var db = connection.database("cardscience");
+    var dbname = options.dbname || "cardscience";
+    var db = connection.database(dbname);
     
-
     var initialize = function() {
         base.init(db);
+
+        log.info(c, "Successfully started up with CouchDB: " + dbname);
         
         if(options.console) {
             var repl = require("repl");
